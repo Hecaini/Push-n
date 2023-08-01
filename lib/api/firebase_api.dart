@@ -1,7 +1,4 @@
 
-
-
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:push_n/page/notification_screen.dart';
@@ -19,13 +16,8 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async{
 class FirebaseApi{
   final _firebaseMessaging = FirebaseMessaging.instance;
 
-  void handleMessage(RemoteMessage? message){
-   if (message==null) return;
-
+  void handleMessage(RemoteMessage message) {
     navigatorKey.currentState?.pushNamed('/notification-screen', arguments: message);
-    //  NotificationScreen.route,
-    //  arguments: message,
-  //  );
   }
 
   Future initPushNotification() async{
@@ -34,7 +26,13 @@ class FirebaseApi{
       badge: true,
       sound: true,
     );
-    FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
+    RemoteMessage? initialMessage =
+    await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      handleMessage(initialMessage);
+    }
+
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
   }
 
