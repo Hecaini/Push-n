@@ -13,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseApi().initNotifications();
+
   runApp(const MyApp());
 }
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
         routes: {
-        '/': (context) => NotificationScreen(),
+        '/': (context) => HomeScreen(),
         '/notification-screen': (context) => NotificationScreen(),
         // Add other named routes here...
         },

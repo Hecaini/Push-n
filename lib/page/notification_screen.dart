@@ -11,16 +11,22 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final message = ModalRoute.of(context)!.settings.arguments;
+    final RemoteMessage message = ModalRoute.of(context)!.settings.arguments as RemoteMessage;
+
+    // Access the custom data 'username' and 'address'
+    final String userID = message.data['user_id'] ?? '';
+    final String username = message.data['username'] ?? '';
+    final String address = message.data['address'] ?? '';
     return Scaffold(
-      appBar: AppBar(title: const Text('Notification Screen'),
+      appBar: AppBar(title: const Text('Screen Notification'),
       ),
       body: Center(
         child: Column(
           children: [
-         /*  Text('${message.notification?.title}'),
-            Text('${message.notification?.body}'),
-            Text('${message.data}'),*/
+         Text('Username:  $userID'),
+            Text('Address:   $username'),
+            Text('Address:   $address'),
+            Text('MESSAGE:   ${message.data}'),
           ],
         ),
       ),

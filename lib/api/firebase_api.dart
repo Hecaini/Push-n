@@ -9,6 +9,7 @@ import 'package:push_n/page/notification_screen.dart';
 import '../main.dart';
 
 
+
 Future<void> handleBackgroundMessage(RemoteMessage message) async{
   print('Title: ${message.notification?.title}');
   print('Body: ${message.notification?.body}');
@@ -18,6 +19,7 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async{
 
 class FirebaseApi{
   final _firebaseMessaging = FirebaseMessaging.instance;
+
 
   void handleMessage(RemoteMessage? message){
    if (message==null) return;
@@ -43,7 +45,7 @@ class FirebaseApi{
     await _firebaseMessaging.requestPermission();
     final fCMToken = await _firebaseMessaging.getToken();
     print('Token: $fCMToken');
-   // initNotifications();
+    initPushNotification();
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
   }
 }
