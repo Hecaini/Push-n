@@ -17,16 +17,18 @@ class NotificationScreen extends StatelessWidget {
     final String userID = message.data['user_id'] ?? '';
     final String username = message.data['username'] ?? '';
     final String address = message.data['address'] ?? '';
+    final String token = message.data['tokens'] ?? '';
     return Scaffold(
       appBar: AppBar(title: const Text('Screen Notification'),
       ),
       body: Center(
         child: Column(
           children: [
-         Text('Username:  $userID'),
-            Text('Address:   $username'),
-            Text('Address:   $address'),
-            Text('MESSAGE:   ${message.data}'),
+         Text('\nUsername:  $userID'),
+            Text('\nAddress:   $username'),
+            Text('\nAddress:   $address'),
+            Text('\nToken:   $token'),
+            //Text('MESSAGE:   ${message.data}'),
           ],
         ),
       ),
