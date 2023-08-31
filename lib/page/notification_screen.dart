@@ -28,10 +28,11 @@ class NotificationScreen extends StatelessWidget {
             Text('\nAddress:   $username'),
             Text('\nAddress:   $address'),
             Text('\nToken:   $token'),
-            //Text('MESSAGE:   ${message.data}'),
+            Text('MESSAGE:   ${message.data}'),
           ],
         ),
       ),
     );
   }
 }
+
